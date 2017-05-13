@@ -1,4 +1,4 @@
-		<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p>
+		<p class="footer">Ryugyong Tech Co. 2017</p>
 	</div>
 </div>
 
