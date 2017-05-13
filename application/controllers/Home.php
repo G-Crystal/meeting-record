@@ -30,23 +30,40 @@ class Home extends CI_Controller {
 	public function index()
 	{
 		// $this->load->view('welcome_message');
-		$this->listview();
+		$this->getList();
 	}
 
-	public function listview($page = 'list')
+	public function getList($page = 'list')
 	{
         if ( ! file_exists(APPPATH.'views/'.$page.'.php'))
         {
-                // Whoops, we don't have a page for that!
-                show_404();
+            // Whoops, we don't have a page for that!
+            show_404();
         }
 
-        $title = "Meeting History";
+        $title = " 면담기록보기";
         $data['title'] = ucfirst($title); // Capitalize the first letter
 
         $data['results'] = $this->record_model->get_list();
 		$this->load->view('header', $data);
         $this->load->view($page, $data);
+		$this->load->view('footer');
+	}
+
+	public function add($page = 'add')
+	{
+        if ( ! file_exists(APPPATH.'views/'.$page.'.php'))
+        {
+            // Whoops, we don't have a page for that!
+            show_404();
+        }
+
+        $title = " 새 면담새용 추가";
+        $data['title'] = ucfirst($title); // Capitalize the first letter
+
+
+		$this->load->view('header', $data);
+		$this->load->view('add');
 		$this->load->view('footer');
 	}
 }
