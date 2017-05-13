@@ -1,5 +1,5 @@
-<div class="control-div">
-	<a href="#" class="btn btn-default">추가</a>
+<div class="form-group">
+	<a href="<?php echo site_url('home/add'); ?>" class="btn btn-primary"><i class="fa fa-plus" aria-hidden="true"></i> 추가</a>
 </div>
 
 <div class="table table-responsive table-striped">
