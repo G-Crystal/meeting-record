@@ -34,4 +34,20 @@ $(function () {
 			$("#aForm").submit();
 		}
 	});
+
+	$("#search_key").on("keydown", function(event) {
+		if(event.keyCode == 13) {
+			search();
+		}
+	});
+
+	$("#search").on("click", function(event) {
+		search();
+	});
+
+	search = function() {
+		var val = $("#search_key").val().trim();
+		$("#search_key").val(val);
+		$("#aForm").submit();
+	}
 });

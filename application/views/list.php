@@ -9,9 +9,9 @@
 		<div class="form-group col-sm-8 col-xs-12">
 			<input type="hidden" name="lastnum" id="lastnum" value="<?php echo $lastnum; ?>">
 		    <div class="input-group">
-				<input type="text" class="form-control" placeholder="검색문자렬을 입력하십시오.">
+				<input type="text" name="search_key" id="search_key" class="form-control" placeholder="검색문자렬을 입력하십시오." value="<?php echo $search_key; ?>">
 				<span class="input-group-btn">
-					<button class="btn btn-default" type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
+					<button class="btn btn-default" type="button" id="search"><i class="fa fa-search" aria-hidden="true"></i></button>
 				</span>
 	    	</div>
 		</div>
@@ -74,7 +74,7 @@
 			<?php endforeach; ?>
 		<?php else: ?>
 			<tr>
-				<td colspan="10">검색결과가 없습니다.</td>
+				<td colspan="10" class="text-center">검색결과가 없습니다.</td>
 			</tr>
 		<?php endif; ?>
 		</tbody>
