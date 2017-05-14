@@ -50,7 +50,7 @@ class Home extends CI_Controller {
 		$this->load->view('footer');
 	}
 
-	public function add($page = 'add')
+	public function add($data = array(), $page = 'add')
 	{
         if ( ! file_exists(APPPATH.'views/'.$page.'.php'))
         {
@@ -63,14 +63,14 @@ class Home extends CI_Controller {
         $data['countries'] = $this->countries;
 
 		$this->load->view('header', $data);
-		$this->load->view('add');
+		$this->load->view('add', $data);
 		$this->load->view('footer');
 	}
 
 	public function addPost()
 	{
-		$this->record_model->insert_record();
-		$this->add();
+		$data['result'] = $this->record_model->insert_record();
+		$this->add($data);
 	}
 
 	public $countries = array("AF" => "Afghanistan",

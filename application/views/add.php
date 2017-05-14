@@ -1,3 +1,15 @@
+<?php if(isset($result)): ?>
+<?php if($result): ?>
+	<div class="alert alert-success">
+		자료를 <strong>성과</strong>적으로 추가하였습니다.
+	</div>
+<?php else: ?>
+	<div class="alert alert-danger">
+		자료추가에서 <strong>실패</strong>하였습니다.
+	</div>
+<?php endif; ?>
+<?php endif; ?>
+
 <form id="addForm" method="post" action="addPost">
 	<div class="form-group row">
 		<div class="col-md-2 col-sm-4 col-xs-12 required">이름</div>

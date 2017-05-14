@@ -2,8 +2,8 @@
 	<a href="<?php echo site_url('home/add'); ?>" class="btn btn-primary"><i class="fa fa-plus" aria-hidden="true"></i> 추가</a>
 </div>
 
-<div class="table table-responsive table-striped">
-	<table class="table table-responsive table-striped">
+<div class="table table-responsive table-striped table-b">
+	<table class="table table-responsive table-striped table-hover table-shadow">
 		<thead>
 			<tr>
 				<td>번호</td>
