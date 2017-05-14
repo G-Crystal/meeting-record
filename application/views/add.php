@@ -16,12 +16,23 @@
 
 	<div class="form-group row">
 		<div class="col-md-2 col-sm-4 col-xs-12">성별</div>
-		<div class="col-md-10 col-sm-8 col-xs-12"><input type="input" name="name" id="name" class="form-control input-control" /></div>
+		<div class="col-md-10 col-sm-8 col-xs-12">
+			<select name="gender" id="gender" class="form-control input-control">
+				<option value="1">남자</option>
+				<option value="0">녀자</option>
+			</select>
+		</div>
 	</div>
 
 	<div class="form-group row">
 		<div class="col-md-2 col-sm-4 col-xs-12">나라</div>
-		<div class="col-md-10 col-sm-8 col-xs-12"><input type="input" name="name" id="name" class="form-control input-control" /></div>
+		<div class="col-md-10 col-sm-8 col-xs-12">
+			<select name="country" id="country" class="form-control input-control">
+			<?php foreach($countries as $key => $value): ?>
+				<option value="<?= $value ?>" title="<?= htmlspecialchars($value) ?>"><?= htmlspecialchars($value) ?></option>
+			<?php endforeach; ?>
+			</select>
+		</div>
 	</div>
 
 	<div class="form-group row">
