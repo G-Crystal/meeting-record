@@ -3,7 +3,7 @@
 
 body {
 	background-color: #fff;
-	margin: 40px;
+	margin: 15px;
 	font-family: Consolas, Monaco, Courier New, Courier, monospace;
 	font: 13px/20px normal Helvetica, Arial, sans-serif;
 	color: #4F5155;
@@ -24,7 +24,7 @@ h1 {
 }
 
 p.footer {
-	text-align: right;
+	text-align: center;
 	font-size: 11px;
 	border-top: 1px solid #D0D0D0;
 	line-height: 32px;
@@ -43,20 +43,8 @@ textarea {
 	box-shadow: 0 0 8px #D0D0D0;
 }
 
-.table-header {
+thead {
 	background-color: #e8e8e8;
-}
-
-.table-row {
-	display: table;
-	width: 100%;
-	line-height: 40px;
-	border-bottom: 1px solid #e8e8e8;
-}
-
-.table-cell {
-	display: table-cell;
-	padding: 0 5px;
 }
 
 .input-control {

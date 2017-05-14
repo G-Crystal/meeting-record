@@ -3,67 +3,39 @@
 </div>
 
 <div class="table table-responsive table-striped">
-	<div class="table-row table-header">
-		<div class="table-cell">번호</div>
-		<div class="table-cell">이름</div>
-		<div class="table-cell">과제명</div>
-		<div class="table-cell">대방이름</div>
-		<div class="table-cell">성별</div>
-		<div class="table-cell">나라</div>
-		<div class="table-cell">면담날자/시간</div>
-		<div class="table-cell">면담내용</div>
-		<div class="table-cell">주의사항</div>
-	</div>
-	<div class="table-row">
-		<div class="table-cell">번호</div>
-		<div class="table-cell">이름</div>
-		<div class="table-cell">과제명</div>
-		<div class="table-cell">대방이름</div>
-		<div class="table-cell">성별</div>
-		<div class="table-cell">나라</div>
-		<div class="table-cell">면담날자/시간</div>
-		<div class="table-cell">면담내용</div>
-		<div class="table-cell">주의사항</div>
-	</div>
-	<div class="table-row">
-		<div class="table-cell">번호</div>
-		<div class="table-cell">이름</div>
-		<div class="table-cell">과제명</div>
-		<div class="table-cell">대방이름</div>
-		<div class="table-cell">성별</div>
-		<div class="table-cell">나라</div>
-		<div class="table-cell">면담날자/시간</div>
-		<div class="table-cell">면담내용</div>
-		<div class="table-cell">주의사항</div>
-	</div>
-	<div class="table-row">
-		<div class="table-cell">번호</div>
-		<div class="table-cell">이름</div>
-		<div class="table-cell">과제명</div>
-		<div class="table-cell">대방이름</div>
-		<div class="table-cell">성별</div>
-		<div class="table-cell">나라</div>
-		<div class="table-cell">면담날자/시간</div>
-		<div class="table-cell">면담내용</div>
-		<div class="table-cell">주의사항</div>
-	</div>
-
-	<?php if (count($results) > 0): ?>
-		<?php $index = 1; ?>
-		<?php foreach ($results as $row): ?>
-		<div class="table-row">
-			<div class="table-cell"><?php echo $index++; ?></div>
-			<div class="table-cell"><?php echo $row['user_name']; ?></div>
-			<div class="table-cell"><?php echo $row['task_name']; ?></div>
-			<div class="table-cell"><?php echo $row['client_name']; ?></div>
-			<div class="table-cell"><?php echo $row['gender']; ?></div>
-			<div class="table-cell"><?php echo $row['country']; ?></div>
-			<div class="table-cell"><?php echo $row['dtime']; ?></div>
-			<div class="table-cell"><?php echo $row['contents']; ?></div>
-			<div class="table-cell"><?php echo $row['note']; ?></div>
-		</div>
-		<?php endforeach; ?>
-	<?php else: ?>
-		<code>Sorry, there is no record.</code>
-	<?php endif; ?>
+	<table class="table table-responsive table-striped">
+		<thead>
+			<tr>
+				<td>번호</td>
+				<td>이름</td>
+				<td>과제명</td>
+				<td>대방이름</td>
+				<td>성별</td>
+				<td>나라</td>
+				<td>면담날자/시간</td>
+				<td>면담내용</td>
+				<td class="hidden-xs">주의사항</td>
+			</tr>
+		</thead>
+		<tbody>
+		<?php if (count($results) > 0): ?>
+			<?php $index = 1; ?>
+			<?php foreach ($results as $row): ?>
+			<tr>
+				<td><?php echo $index++; ?></td>
+				<td><?php echo $row['user_name']; ?></td>
+				<td><?php echo $row['task_name']; ?></td>
+				<td><?php echo $row['client_name']; ?></td>
+				<td><?php echo ($row['gender'] == 1) ? "남자" : "녀자"; ?></td>
+				<td><?php echo $row['country']; ?></td>
+				<td><?php echo $row['dtime']; ?></td>
+				<td><?php echo $row['contents']; ?></td>
+				<td class="hidden-xs"><?php echo $row['note']; ?></td>
+			</tr>
+			<?php endforeach; ?>
+		<?php else: ?>
+			<code>Sorry, there is no record.</code>
+		<?php endif; ?>
+		</tbody>
+	</table>
 </div>
