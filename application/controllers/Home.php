@@ -66,4 +66,10 @@ class Home extends CI_Controller {
 		$this->load->view('add');
 		$this->load->view('footer');
 	}
+
+	public function addPost()
+	{
+		$this->record_model->insert_record();
+		$this->add();
+	}
 }
