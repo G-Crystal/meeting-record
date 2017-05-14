@@ -22,6 +22,11 @@ h1 {
 	padding: 14px 15px 10px 15px;
 }
 
+a {
+	color: #000000;
+	cursor: pointer;
+}
+
 #body {
 	margin: 0 15px 0 15px;
 }
@@ -66,4 +71,19 @@ thead {
 .required:after {
 	color: #FF0000;
 	content: '*';
+}
+
+.pagination-control {
+	width: 30px;
+}
+
+.pagination-select-control {
+	height: 26px;
+}
+
+.cell-div {
+    display: table-cell;
+    float: right;
+    padding: 2px 10px;
+    line-height: 20px;
 }

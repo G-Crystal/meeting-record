@@ -20,7 +20,7 @@ class Home extends CI_Controller {
 	 */
 
 	private $pagenum = 1;
-	private $limit = 5;
+	private $limit = 2;
 
     public function __construct()
     {
@@ -45,12 +45,13 @@ class Home extends CI_Controller {
             // Whoops, we don't have a page for that!
             show_404();
         }
-        $param['pagenum'] = is_null($this->input->post('pagenum')) ? $this->pagenum : $this->input->post('pagenum');
-        $param['limit'] = is_null($this->input->post('limit')) ? $this->limit : $this->input->post('limit');
-        if(!is_null($this->input->post('search_key'))) $param['search_key'] = $this->input->post('search_key');
+        $data['pagenum'] = is_null($this->input->post('pagenum')) ? $this->pagenum : $this->input->post('pagenum');
+        $data['limit'] = is_null($this->input->post('limit')) ? $this->limit : $this->input->post('limit');
+        if(!is_null($this->input->post('search_key'))) $data['search_key'] = $this->input->post('search_key');
 
-        $data['total_count'] = $this->record_model->get_count($param);
-        $data['results'] = $this->record_model->get_list($param);
+        $data['total_count'] = $this->record_model->get_count($data);
+        if($data['total_count'] < ($data['pagenum'] - 1) * $data['limit']) $data['pagenum'] = ceil($data['total_count'] / $data['limit']);
+        $data['results'] = $this->record_model->get_list($data);
 
         $title = " 면담기록보기";
         $data['title'] = ucfirst($title); // Capitalize the first letter

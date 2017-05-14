@@ -1,7 +1,45 @@
-<div class="form-group">
-	<a href="<?php echo site_url('home/add'); ?>" class="btn btn-primary"><i class="fa fa-plus" aria-hidden="true"></i> 추가</a>
-	<?php echo $total_count; ?>
-</div>
+<?php $lastnum = ceil($total_count / $limit); ?>
+<?php $limits = array(2, 10, 25, 50, 100); ?>
+
+<form id="aForm" method="post" action="<?php echo site_url('home/getList'); ?>">
+	<div class="row">
+		<div class="form-group col-sm-2 col-xs-12">
+			<a href="<?php echo site_url('home/add'); ?>" class="btn btn-primary"><i class="fa fa-plus" aria-hidden="true"></i> 추가</a>
+		</div>
+		<div class="form-group col-sm-8 col-xs-12">
+			<input type="hidden" name="lastnum" id="lastnum" value="<?php echo $lastnum; ?>">
+		    <div class="input-group">
+				<input type="text" class="form-control" placeholder="검색문자렬을 입력하십시오.">
+				<span class="input-group-btn">
+					<button class="btn btn-default" type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
+				</span>
+	    	</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12 text-right">
+			<div class="cell-div">
+				<a href="#" id="view_first"><i class="fa fa-fast-backward" aria-hidden="true"></i></a>
+				<a href="#" id="view_prev"><i class="fa fa-backward" aria-hidden="true"></i></a>
+				<input type="text" name="pagenum" id="pagenum" class="pagination-control" value="<?php echo $pagenum; ?>"> / <?php echo $lastnum; ?>
+				<a href="#" id="view_next"><i class="fa fa-forward" aria-hidden="true"></i></a>
+				<a href="#" id="view_last"><i class="fa fa-fast-forward" aria-hidden="true"></i></a>
+			</div>
+			<div class="cell-div">
+				<span>현시행수 : </span>
+				<select name="limit" id="limit" class="pagination-select-control">
+					<?php foreach ($limits as $val): ?>
+					<option value="<?php echo $val; ?>" <?php echo ($limit == $val) ? 'selected' : ''; ?> ><?php echo $val; ?></option>
+					<?php endforeach; ?>
+				</select>
+			</div>
+			<div class="cell-div">
+				<span>검색결과 : </span>
+				<input type="text" class="pagination-control" value="<?php echo $total_count; ?>" readonly>
+			</div>
+		</div>
+	</div>
+</form>
 
 <div class="table table-responsive table-striped table-b">
 	<table class="table table-responsive table-striped table-hover table-shadow">
