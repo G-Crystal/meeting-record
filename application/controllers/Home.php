@@ -19,6 +19,9 @@ class Home extends CI_Controller {
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
 
+	private $pagenum = 1;
+	private $limit = 5;
+
     public function __construct()
     {
             parent::__construct();
@@ -33,25 +36,33 @@ class Home extends CI_Controller {
 		$this->getList();
 	}
 
-	public function getList($page = 'list')
+	public function getList()
 	{
+		$page = 'list';
+
         if ( ! file_exists(APPPATH.'views/'.$page.'.php'))
         {
             // Whoops, we don't have a page for that!
             show_404();
         }
+        $param['pagenum'] = is_null($this->input->post('pagenum')) ? $this->pagenum : $this->input->post('pagenum');
+        $param['limit'] = is_null($this->input->post('limit')) ? $this->limit : $this->input->post('limit');
+        if(!is_null($this->input->post('search_key'))) $param['search_key'] = $this->input->post('search_key');
+
+        $data['total_count'] = $this->record_model->get_count($param);
+        $data['results'] = $this->record_model->get_list($param);
 
         $title = " 면담기록보기";
         $data['title'] = ucfirst($title); // Capitalize the first letter
-
-        $data['results'] = $this->record_model->get_list();
 		$this->load->view('header', $data);
         $this->load->view($page, $data);
 		$this->load->view('footer');
 	}
 
-	public function add($data = array(), $page = 'add')
+	public function add($data = array())
 	{
+		$page = 'add';
+
         if ( ! file_exists(APPPATH.'views/'.$page.'.php'))
         {
             // Whoops, we don't have a page for that!
@@ -69,7 +80,18 @@ class Home extends CI_Controller {
 
 	public function addPost()
 	{
-		$data['result'] = $this->record_model->insert_record();
+        $param = array(
+            'user_name' => is_null($this->input->post('user_name')) ? '' : $this->input->post('user_name'),
+            'task_name' => is_null($this->input->post('task_name')) ? '' : $this->input->post('task_name'),
+            'client_name' => is_null($this->input->post('client_name')) ? '' : $this->input->post('client_name'),
+            'gender' => is_null($this->input->post('gender')) ? 1 : $this->input->post('gender'),
+            'country' => is_null($this->input->post('country')) ? '' : $this->input->post('country'),
+            'dtime' => is_null($this->input->post('dtime')) ? date('Y-m-d H:i:s') : $this->input->post('dtime'),
+            'contents' => is_null($this->input->post('contents')) ? '' : $this->input->post('contents'),
+            'note' => is_null($this->input->post('note')) ? '' : $this->input->post('note')
+        );
+
+		$data['result'] = $this->record_model->insert_record($param);
 		$this->add($data);
 	}
 

@@ -1,5 +1,6 @@
 <div class="form-group">
 	<a href="<?php echo site_url('home/add'); ?>" class="btn btn-primary"><i class="fa fa-plus" aria-hidden="true"></i> 추가</a>
+	<?php echo $total_count; ?>
 </div>
 
 <div class="table table-responsive table-striped table-b">
@@ -18,7 +19,7 @@
 			</tr>
 		</thead>
 		<tbody>
-		<?php if (count($results) > 0): ?>
+		<?php if ($total_count > 0): ?>
 			<?php $index = 1; ?>
 			<?php foreach ($results as $row): ?>
 			<tr>
@@ -34,7 +35,9 @@
 			</tr>
 			<?php endforeach; ?>
 		<?php else: ?>
-			<code>Sorry, there is no record.</code>
+			<tr>
+				<td colspan="10">검색결과가 없습니다.</td>
+			</tr>
 		<?php endif; ?>
 		</tbody>
 	</table>

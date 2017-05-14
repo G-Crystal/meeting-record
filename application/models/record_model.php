@@ -1,30 +1,57 @@
 <?php
 class Record_model extends CI_Model {
 
+    private $offset = 0;
+    private $limit = 10;
+    private $pagenum = 1;
+
     public function __construct()
     {
         $this->load->database();
     }
 
-    public function get_list($offset = 1, $limit = 10)
+    public function get_count($param)
     {
-        $query = $this->db->get('record');
+        $this->db->select('id');
+        $this->db->from('record');
+        if(isset($param['search_key']) && ($param['search_key'] != ''))
+        {
+            $this->db->where('user_name LIKE \'%'.$param['search_key'].'%\'');
+            $this->db->or_where('task_name LIKE \'%'.$param['search_key'].'%\'');
+            $this->db->or_where('client_name LIKE \'%'.$param['search_key'].'%\'');
+            $this->db->or_where('contents LIKE \'%'.$param['search_key'].'%\'');
+            $this->db->or_where('note LIKE \'%'.$param['search_key'].'%\'');
+        }
+        $query = $this->db->get();
+
+        return $query->num_rows();
+    }
+
+    public function get_list($param)
+    {
+        $this->limit = isset($param['limit']) ? $param['limit'] : $this->limit;
+        $this->pagenum = isset($param['pagenum']) ? $param['pagenum'] : $this->pagenum;
+        $this->offset = ($this->pagenum - 1) * $this->limit;
+
+        $this->db->select('*');
+        $this->db->from('record');
+        if(isset($param['search_key']) && ($param['search_key'] != ''))
+        {
+            $this->db->where('user_name LIKE \'%'.$param['search_key'].'%\'');
+            $this->db->or_where('task_name LIKE \'%'.$param['search_key'].'%\'');
+            $this->db->or_where('client_name LIKE \'%'.$param['search_key'].'%\'');
+            $this->db->or_where('contents LIKE \'%'.$param['search_key'].'%\'');
+            $this->db->or_where('note LIKE \'%'.$param['search_key'].'%\'');
+        }
+        $this->db->limit($this->limit);
+        $this->db->offset($this->offset);
+        $query = $this->db->get();
+
         return $query->result_array();
     }
 
-    public function insert_record()
+    public function insert_record($param)
     {
-        $data = array(
-            'user_name' => is_null($this->input->post('user_name')) ? '' : $this->input->post('user_name'),
-            'task_name' => is_null($this->input->post('task_name')) ? '' : $this->input->post('task_name'),
-            'client_name' => is_null($this->input->post('client_name')) ? '' : $this->input->post('client_name'),
-            'gender' => is_null($this->input->post('gender')) ? 1 : $this->input->post('gender'),
-            'country' => is_null($this->input->post('country')) ? '' : $this->input->post('country'),
-            'dtime' => is_null($this->input->post('dtime')) ? date('Y-m-d H:i:s') : $this->input->post('dtime'),
-            'contents' => is_null($this->input->post('contents')) ? '' : $this->input->post('contents'),
-            'note' => is_null($this->input->post('note')) ? '' : $this->input->post('note')
-        );
-
-        return $this->db->insert('record', $data);
+        return $this->db->insert('record', $param);
     }
 }
