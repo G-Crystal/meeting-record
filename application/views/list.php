@@ -53,7 +53,7 @@
 		<?php foreach ($results as $row): ?>
 		<div class="table-row">
 			<div class="table-cell"><?php echo $index++; ?></div>
-			<div class="table-cell"><?php echo $row['name']; ?></div>
+			<div class="table-cell"><?php echo $row['user_name']; ?></div>
 			<div class="table-cell"><?php echo $row['task_name']; ?></div>
 			<div class="table-cell"><?php echo $row['client_name']; ?></div>
 			<div class="table-cell"><?php echo $row['gender']; ?></div>

@@ -1,7 +1,7 @@
-<form id="addForm" method="post" action="news/create">
+<form id="addForm" method="post" action="addPost">
 	<div class="form-group row">
 		<div class="col-md-2 col-sm-4 col-xs-12 required">이름</div>
-		<div class="col-md-10 col-sm-8 col-xs-12"><input type="input" name="name" id="name" class="form-control input-control" required /></div>
+		<div class="col-md-10 col-sm-8 col-xs-12"><input type="input" name="user_name" id="user_name" class="form-control input-control" required /></div>
 	</div>
 
 	<div class="form-group row">
