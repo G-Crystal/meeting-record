@@ -1,5 +1,7 @@
 $(function () {
-    $('#dtime').datetimepicker();
+    $('#dtime').datetimepicker({
+        defaultDate: new Date().toLocaleString()
+    });
 
 	$("#view_first").on("click", function(event) {
 		$("#pagenum").val(1);
