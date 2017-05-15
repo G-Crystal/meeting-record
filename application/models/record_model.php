@@ -50,8 +50,27 @@ class Record_model extends CI_Model {
         return $query->result_array();
     }
 
+    public function get_record($param)
+    {
+        $this->db->select('*');
+        $this->db->from('record');
+        if(isset($param['ref_index']) && ($param['ref_index'] != ''))
+        {
+            $this->db->where('id', $param['ref_index']);
+        }
+        $query = $this->db->get();
+
+        return $query->row();
+    }
+
     public function insert_record($param)
     {
         return $this->db->insert('record', $param);
+    }
+
+    public function edit_record($param, $id)
+    {
+        $this->db->where('id', $id);
+        return $this->db->update('record', $param);
     }
 }

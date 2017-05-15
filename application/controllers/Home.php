@@ -22,6 +22,7 @@ class Home extends CI_Controller {
 	private $pagenum = 1;
 	private $limit = 10;
 	private $search_key = '';
+	private $ref_index = '';
 
     public function __construct()
     {
@@ -46,9 +47,11 @@ class Home extends CI_Controller {
             // Whoops, we don't have a page for that!
             show_404();
         }
+
         $data['pagenum'] = is_null($this->input->post('pagenum')) ? $this->pagenum : $this->input->post('pagenum');
         $data['limit'] = is_null($this->input->post('limit')) ? $this->limit : $this->input->post('limit');
         $data['search_key'] = is_null($this->input->post('search_key')) ? $this->search_key : $this->input->post('search_key');
+        $data['ref_index'] = is_null($this->input->post('ref_index')) ? $this->ref_index : $this->input->post('ref_index');
         // if(!is_null($this->input->post('search_key')) && ($this->input->post('search_key') != '')) $data['search_key'] = $this->input->post('search_key');
 
         $data['total_count'] = $this->record_model->get_count($data);
@@ -57,6 +60,7 @@ class Home extends CI_Controller {
 
         $title = " 면담기록보기";
         $data['title'] = ucfirst($title); // Capitalize the first letter
+
 		$this->load->view('header', $data);
         $this->load->view($page, $data);
 		$this->load->view('footer');
@@ -77,7 +81,7 @@ class Home extends CI_Controller {
         $data['countries'] = $this->countries;
 
 		$this->load->view('header', $data);
-		$this->load->view('add', $data);
+		$this->load->view($page, $data);
 		$this->load->view('footer');
 	}
 
@@ -98,6 +102,57 @@ class Home extends CI_Controller {
 		$this->add($data);
 	}
 
+	public function edit($data = array())
+	{
+		$page = 'edit';
+
+        if ( ! file_exists(APPPATH.'views/'.$page.'.php'))
+        {
+            // Whoops, we don't have a page for that!
+            show_404();
+        }
+
+        $data['ref_index'] = is_null($this->input->post('ref_index')) ? $this->ref_index : $this->input->post('ref_index');
+
+        $data['result'] = $this->record_model->get_record($data);
+
+        $title = " 면담새용 수정";
+        $data['title'] = ucfirst($title); // Capitalize the first letter
+        $data['countries'] = $this->countries;
+
+		$this->load->view('header', $data);
+		$this->load->view($page, $data);
+		$this->load->view('footer');
+	}
+
+	public function editPost()
+	{
+		if(is_null($this->input->post('id')) || ($this->input->post('id') != ''))
+		{
+			$this->getList();
+			return;
+		}
+		
+        $id = $this->input->post('id');
+
+        $param = array(
+            'user_name' => is_null($this->input->post('user_name')) ? '' : $this->input->post('user_name'),
+            'task_name' => is_null($this->input->post('task_name')) ? '' : $this->input->post('task_name'),
+            'client_name' => is_null($this->input->post('client_name')) ? '' : $this->input->post('client_name'),
+            'gender' => is_null($this->input->post('gender')) ? 1 : $this->input->post('gender'),
+            'country' => is_null($this->input->post('country')) ? '' : $this->input->post('country'),
+            'dtime' => is_null($this->input->post('dtime')) ? date('Y-m-d H:i:s') : $this->input->post('dtime'),
+            'contents' => is_null($this->input->post('contents')) ? '' : $this->input->post('contents'),
+            'note' => is_null($this->input->post('note')) ? '' : $this->input->post('note')
+        );
+
+		$this->record_model->edit_record($param, $id);
+
+		$this->getList();
+	}
+
+
+	/* Country List */
 	public $countries = array("AF" => "Afghanistan",
 		"AX" => "Åland Islands",
 		"AL" => "Albania",

@@ -2,12 +2,12 @@
 <?php $limits = array(2, 10, 25, 50, 100); ?>
 
 <form id="aForm" method="post" action="<?php echo site_url('home/getList'); ?>">
+	<input type="hidden" name="lastnum" id="lastnum" value="<?php echo $lastnum; ?>">
 	<div class="row">
 		<div class="form-group col-sm-2 col-xs-12">
 			<a href="<?php echo site_url('home/add'); ?>" class="btn btn-primary"><i class="fa fa-plus" aria-hidden="true"></i> 추가</a>
 		</div>
 		<div class="form-group col-sm-8 col-xs-12">
-			<input type="hidden" name="lastnum" id="lastnum" value="<?php echo $lastnum; ?>">
 		    <div class="input-group">
 				<input type="text" name="search_key" id="search_key" class="form-control" placeholder="검색문자렬을 입력하십시오." value="<?php echo $search_key; ?>">
 				<span class="input-group-btn">
@@ -40,6 +40,9 @@
 		</div>
 	</div>
 </form>
+<form id="editForm" method="post" action="<?php echo site_url('home/edit'); ?>">
+	<input type="hidden" name="ref_index" id="ref_index" value="<?php echo $ref_index; ?>">
+</form>
 
 <div class="table table-responsive table-striped table-b">
 	<table class="table table-responsive table-striped table-hover table-shadow">
@@ -60,7 +63,7 @@
 		<?php if ($total_count > 0): ?>
 			<?php $index = 1; ?>
 			<?php foreach ($results as $row): ?>
-			<tr>
+			<tr class="editable-row" ref="<?php echo $row['id']; ?>">
 				<td><?php echo $index++; ?></td>
 				<td><?php echo $row['user_name']; ?></td>
 				<td><?php echo $row['task_name']; ?></td>
