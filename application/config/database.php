@@ -98,9 +98,9 @@ $query_builder = TRUE;
 
 /* PostgreSQL */
 $db['default'] = array(
-'dsn'   => 'pgsql:host=localhost;port=5432;dbname=d3rakhrg8us919;user=dbmejigepjslct;password=53ca2cc3805ba1e0f0a3ebd2b2cb1ba9219b6d5e7c4f60d7b2ad586ee4c93fb6',
+'dsn'   => 'pgsql:host=ec2-23-21-186-138.compute-1.amazonaws.com;port=5432;dbname=d3rakhrg8us919;user=dbmejigepjslct;password=53ca2cc3805ba1e0f0a3ebd2b2cb1ba9219b6d5e7c4f60d7b2ad586ee4c93fb6',
 // 'dsn'    => '',
-'hostname' => 'localhost',
+'hostname' => 'ec2-23-21-186-138.compute-1.amazonaws.com',
 'username' => 'dbmejigepjslct',
 'password' => '53ca2cc3805ba1e0f0a3ebd2b2cb1ba9219b6d5e7c4f60d7b2ad586ee4c93fb6',
 'database' => 'd3rakhrg8us919',
