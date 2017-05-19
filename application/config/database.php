@@ -73,24 +73,50 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $active_group = 'default';
 $query_builder = TRUE;
 
+/* MySQL */
+// $db['default'] = array(
+// 	'dsn'	=> '',
+// 	'hostname' => 'localhost',
+// 	'username' => 'root',
+// 	'password' => '',
+// 	'database' => 'meeting',
+// 	'dbdriver' => 'mysqli',
+// 	'dbprefix' => '',
+// 	'pconnect' => FALSE,
+// 	'db_debug' => (ENVIRONMENT !== 'production'),
+// 	'cache_on' => FALSE,
+// 	'cachedir' => '',
+// 	'char_set' => 'utf8',
+// 	'dbcollat' => 'utf8_general_ci',
+// 	'swap_pre' => '',
+// 	'encrypt' => FALSE,
+// 	'compress' => FALSE,
+// 	'stricton' => FALSE,
+// 	'failover' => array(),
+// 	'save_queries' => TRUE
+// );
+
+/* PostgreSQL */
 $db['default'] = array(
-	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => '',
-	'database' => 'meeting',
-	'dbdriver' => 'mysqli',
-	'dbprefix' => '',
-	'pconnect' => FALSE,
-	'db_debug' => (ENVIRONMENT !== 'production'),
-	'cache_on' => FALSE,
-	'cachedir' => '',
-	'char_set' => 'utf8',
-	'dbcollat' => 'utf8_general_ci',
-	'swap_pre' => '',
-	'encrypt' => FALSE,
-	'compress' => FALSE,
-	'stricton' => FALSE,
-	'failover' => array(),
-	'save_queries' => TRUE
+'dsn'   => 'pgsql:host=localhost;port=5432;dbname=d3rakhrg8us919;user=dbmejigepjslct;password=53ca2cc3805ba1e0f0a3ebd2b2cb1ba9219b6d5e7c4f60d7b2ad586ee4c93fb6',
+// 'dsn'    => '',
+'hostname' => 'localhost',
+'username' => 'dbmejigepjslct',
+'password' => '53ca2cc3805ba1e0f0a3ebd2b2cb1ba9219b6d5e7c4f60d7b2ad586ee4c93fb6',
+'database' => 'd3rakhrg8us919',
+'dbdriver' => '',
+'dbprefix' => '',
+'pconnect' => FALSE,
+'db_debug' => TRUE,
+'cache_on' => FALSE,
+'cachedir' => '',
+'char_set' => 'utf8',
+'dbcollat' => 'utf8_general_ci',
+'swap_pre' => '',
+'encrypt' => FALSE,
+'compress' => FALSE,
+'stricton' => FALSE,
+'failover' => array(),
+'save_queries' => TRUE
+  // 'port' => '5432'
 );
