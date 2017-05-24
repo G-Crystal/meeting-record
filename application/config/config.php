@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 // $config['base_url'] = 'http://local.meeting.com/';
-$config['base_url'] = 'https://whispering-dawn-91588.herokuapp.com/';
+$config['base_url'] = 'https://ryugyong.herokuapp.com/';
 
 /*
 |--------------------------------------------------------------------------
