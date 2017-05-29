@@ -1,5 +1,5 @@
 <?php $lastnum = ceil($total_count / $limit); ?>
-<?php $limits = array(2, 10, 25, 50, 100); ?>
+<?php $limits = array(5, 10, 25, 50, 100); ?>
 
 <form id="aForm" method="post" action="<?php echo site_url('home/getList'); ?>">
 	<input type="hidden" name="lastnum" id="lastnum" value="<?php echo $lastnum; ?>">
