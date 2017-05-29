@@ -61,5 +61,5 @@ if( ( isset($_SERVER['PHP_AUTH_USER'] ) && ( $_SERVER['PHP_AUTH_USER'] == "moyeo
 } else {
     header('WWW-Authenticate: Basic realm="Jonas Realm"');
     header('HTTP/1.0 401 Unauthorized');
-    $route['default_controller'] = 'error';
+    $route['default_controller'] = 'errors';
 }
