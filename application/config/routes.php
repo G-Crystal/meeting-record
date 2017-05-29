@@ -49,6 +49,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'home';
+// $route['default_controller'] = 'home';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+
+if( ( isset($_SERVER['PHP_AUTH_USER'] ) && ( $_SERVER['PHP_AUTH_USER'] == "moyeora" ) ) AND
+      ( isset($_SERVER['PHP_AUTH_PW'] ) && ( sha1($_SERVER['PHP_AUTH_PW']) == "ba85f52d535194686fccf413453780fe6cd0d355" )) )
+{
+	$route['default_controller'] = 'home';
+
+} else {
+    header('WWW-Authenticate: Basic realm="Jonas Realm"');
+    header('HTTP/1.0 401 Unauthorized');
+    $route['default_controller'] = 'error';
+}
