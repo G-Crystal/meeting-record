@@ -74,30 +74,30 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 /* MySQL */
-// $db['default'] = array(
-// 	'dsn'	=> '',
-// 	'hostname' => 'localhost',
-// 	'username' => 'root',
-// 	'password' => '',
-// 	'database' => 'meeting',
-// 	'dbdriver' => 'mysqli',
-// 	'dbprefix' => '',
-// 	'pconnect' => FALSE,
-// 	'db_debug' => (ENVIRONMENT !== 'production'),
-// 	'cache_on' => FALSE,
-// 	'cachedir' => '',
-// 	'char_set' => 'utf8',
-// 	'dbcollat' => 'utf8_general_ci',
-// 	'swap_pre' => '',
-// 	'encrypt' => FALSE,
-// 	'compress' => FALSE,
-// 	'stricton' => FALSE,
-// 	'failover' => array(),
-// 	'save_queries' => TRUE
-// );
+$db['default'] = array(
+	'dsn'	=> '',
+	'hostname' => 'localhost',
+	'username' => 'root',
+	'password' => '',
+	'database' => 'meeting',
+	'dbdriver' => 'mysqli',
+	'dbprefix' => '',
+	'pconnect' => FALSE,
+	'db_debug' => (ENVIRONMENT !== 'production'),
+	'cache_on' => FALSE,
+	'cachedir' => '',
+	'char_set' => 'utf8',
+	'dbcollat' => 'utf8_general_ci',
+	'swap_pre' => '',
+	'encrypt' => FALSE,
+	'compress' => FALSE,
+	'stricton' => FALSE,
+	'failover' => array(),
+	'save_queries' => TRUE
+);
 
 /* PostgreSQL */
-$db['default'] = array(
+/*$db['default'] = array(
 'dsn'   => 'pgsql:host=ec2-23-21-186-138.compute-1.amazonaws.com;port=5432;dbname=d3rakhrg8us919;user=dbmejigepjslct;password=53ca2cc3805ba1e0f0a3ebd2b2cb1ba9219b6d5e7c4f60d7b2ad586ee4c93fb6',
 // 'dsn'    => '',
 'hostname' => 'ec2-23-21-186-138.compute-1.amazonaws.com',
@@ -119,4 +119,4 @@ $db['default'] = array(
 'failover' => array(),
 'save_queries' => TRUE
   // 'port' => '5432'
-);
+);*/
