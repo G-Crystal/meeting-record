@@ -57,9 +57,12 @@ if( ( isset($_SERVER['PHP_AUTH_USER'] ) && ( $_SERVER['PHP_AUTH_USER'] == "moyeo
       ( isset($_SERVER['PHP_AUTH_PW'] ) && ( sha1($_SERVER['PHP_AUTH_PW']) == "ba85f52d535194686fccf413453780fe6cd0d355" )) )
 {
 	$route['default_controller'] = 'home';
-
-} else {
+}
+else
+{
     header('WWW-Authenticate: Basic realm="Jonas Realm"');
     header('HTTP/1.0 401 Unauthorized');
-    $route['default_controller'] = 'errors';
+    // $route['default_controller'] = 'errors';
+    echo "<h1>Welcome to Our Website!</h1><p>You missed permition check or you clicked Cancel button</p>";
+    exit;
 }
