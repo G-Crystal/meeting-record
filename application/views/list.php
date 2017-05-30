@@ -77,7 +77,7 @@
 			<?php endforeach; ?>
 		<?php else: ?>
 			<tr>
-				<td colspan="10" class="text-center">검색결과가 없습니다.</td>
+				<td colspan="9" class="text-center">검색결과가 없습니다.</td>
 			</tr>
 		<?php endif; ?>
 		</tbody>
